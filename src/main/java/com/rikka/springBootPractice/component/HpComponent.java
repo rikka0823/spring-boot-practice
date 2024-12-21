@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HpComponent implements PrintService {
 
-    @Value("${count}")
+//    @Value("${count}")
     private int count;
 
 //    @PostConstruct

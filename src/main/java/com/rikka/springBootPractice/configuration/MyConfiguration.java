@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MyConfiguration {
 
-    @Value("${rikka.coun:999}")
+//    @Value("${rikka.coun:999}")
     private int count;
 
     @Bean

@@ -1,0 +1,21 @@
+{
+  "name": "Amy",
+  "age": 19,
+  "edit": false,
+  "score": 3.2,
+  "courseList": ["math", "english"],
+  "pet": {
+    "name": "white",
+    "age": 1
+  },
+  "petList": [
+    {
+      "name": "white",
+      "age": 2
+    },
+    {
+      "name": "black",
+      "age": 3
+    }
+  ]
+}
