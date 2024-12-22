@@ -1,4 +1,4 @@
-package com.rikka.springBootPractice.vo.studentRes;
+package com.rikka.springBootPractice.vo;
 
 import com.rikka.springBootPractice.component.Pet;
 import com.rikka.springBootPractice.component.Student;

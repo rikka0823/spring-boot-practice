@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-//@SpringBootTest
+// @SpringBootTest
 public class StudentImplTest {
 
     @Autowired
@@ -19,8 +19,9 @@ public class StudentImplTest {
 
     @Test
     public void test() {
-        String str = "213";
+        String str = "216";
         System.out.println(Integer.parseInt(str));
+        System.out.println("ha");
     }
 
 
