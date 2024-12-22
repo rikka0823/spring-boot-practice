@@ -2,9 +2,9 @@ package com.rikka.springBootPractice.vo;
 
 public class StudentReq {
 
-    public Integer age;
+    private Integer age;
 
-    public String name;
+    private String name;
 
     public StudentReq() {
     }
