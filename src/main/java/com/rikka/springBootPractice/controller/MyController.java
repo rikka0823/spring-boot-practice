@@ -88,7 +88,7 @@ public class MyController {
 
     @DeleteMapping("students/{id}")
     public String delete(@PathVariable int id) {
-        System.out.println("b");
+        System.out.println("a");
         System.out.println(id);
         return "delete: " + id;
     }
