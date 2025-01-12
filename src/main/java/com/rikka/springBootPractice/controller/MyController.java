@@ -70,7 +70,7 @@ public class MyController {
     @PostMapping("students")
     public String create(@RequestBody StudentReq req) {
         System.out.println(req.getName());
-        return "create: " +  req.getName();
+        return "create: " + req.getName();
     }
 
     @GetMapping("students/{id}")
@@ -88,11 +88,9 @@ public class MyController {
 
     @DeleteMapping("students/{id}")
     public String delete(@PathVariable int id) {
-        System.out.println("a");
         System.out.println(id);
         return "delete: " + id;
     }
-
 
 
 }
