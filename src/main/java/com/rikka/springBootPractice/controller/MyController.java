@@ -5,13 +5,18 @@ import com.rikka.springBootPractice.service.ifs.PrintService;
 import com.rikka.springBootPractice.service.ifs.StudentService;
 import com.rikka.springBootPractice.vo.StudentReq;
 import com.rikka.springBootPractice.vo.StudentRes;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
 //@Controller
+@Validated
 @RequestMapping("/rikka")
 @RestController
 public class MyController {
@@ -81,17 +86,16 @@ public class MyController {
 
     @PutMapping("students/{id}")
     public String update(@PathVariable Integer id,
-                         @RequestBody StudentReq req) {
+                         @RequestBody @Valid StudentReq req) {
         System.out.println(req);
         return "update: " + req;
     }
 
     @DeleteMapping("students/{id}")
-    public String delete(@PathVariable int id) {
+    public String delete(@PathVariable @Min(50) Integer id) {
         System.out.println(id);
+        System.out.println("a");
         return "delete: " + id;
     }
-
-
 }
 
