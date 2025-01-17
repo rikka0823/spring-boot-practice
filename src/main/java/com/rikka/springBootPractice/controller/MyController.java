@@ -94,7 +94,7 @@ public class MyController {
     @DeleteMapping("students/{id}")
     public String delete(@PathVariable @Min(50) Integer id) {
         System.out.println(id);
-        System.out.println("a");
+        System.out.println("b");
         return "delete: " + id;
     }
 }
