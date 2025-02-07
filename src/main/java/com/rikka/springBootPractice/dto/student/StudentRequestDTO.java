@@ -1,10 +1,10 @@
-package com.rikka.springBootPractice.vo;
+package com.rikka.springBootPractice.dto.student;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class StudentReq {
+public class StudentRequestDTO {
 
     @Min(18)
     private Integer age;
@@ -13,10 +13,10 @@ public class StudentReq {
     @Size(min = 2, max = 4)
     private String name;
 
-    public StudentReq() {
+    public StudentRequestDTO() {
     }
 
-    public StudentReq(Integer age, String name) {
+    public StudentRequestDTO(Integer age, String name) {
         this.age = age;
         this.name = name;
     }

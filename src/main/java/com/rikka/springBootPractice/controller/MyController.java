@@ -1,16 +1,17 @@
 package com.rikka.springBootPractice.controller;
 
 import com.rikka.springBootPractice.aspect.MyAspect;
-import com.rikka.springBootPractice.service.ifs.PrintService;
-import com.rikka.springBootPractice.service.ifs.StudentService;
-import com.rikka.springBootPractice.vo.StudentReq;
-import com.rikka.springBootPractice.vo.StudentRes;
+import com.rikka.springBootPractice.service.print.PrintService;
+import com.rikka.springBootPractice.service.student.StudentService;
+import com.rikka.springBootPractice.dto.student.StudentRequestDTO;
+import com.rikka.springBootPractice.dto.student.StudentResponseDTO;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,14 +44,14 @@ public class MyController {
     }
 
     @GetMapping("basicReq")
-    public StudentRes basicRes1(@RequestParam(name = "newId", required = false) Integer id,
-                                @RequestParam(defaultValue = "hello", required = false) String str) {
+    public StudentResponseDTO basicRes1(@RequestParam(name = "newId", required = false) Integer id,
+                                        @RequestParam(defaultValue = "hello", required = false) String str) {
         System.out.println(id + str);
         return studentService.basicRes();
     }
 
     @PostMapping("postReq")
-    public StudentRes basicRes2(@RequestBody StudentReq req) {
+    public StudentResponseDTO basicRes2(@RequestBody StudentRequestDTO req) {
         System.out.println(req);
         return studentService.basicRes(req);
     }
@@ -73,7 +74,7 @@ public class MyController {
 //    @RequestMapping("students")
 //    @RequestMapping(value = "students", method = RequestMethod.POST)
     @PostMapping("students")
-    public String create(@RequestBody StudentReq req) {
+    public String create(@RequestBody StudentRequestDTO req) {
         System.out.println(req.getName());
         return "create: " + req.getName();
     }
@@ -86,7 +87,7 @@ public class MyController {
 
     @PutMapping("students/{id}")
     public String update(@PathVariable Integer id,
-                         @RequestBody @Valid StudentReq req) {
+                         @RequestBody @Valid StudentRequestDTO req) {
         System.out.println(req);
         return "update: " + req;
     }
@@ -94,8 +95,36 @@ public class MyController {
     @DeleteMapping("students/{id}")
     public String delete(@PathVariable @Min(50) Integer id) {
         System.out.println(id);
-        System.out.println("b");
         return "delete: " + id;
     }
-}
 
+    @PostMapping("httpStatus")
+    public ResponseEntity<String> httpStatus() {
+//        return ResponseEntity.status(HttpStatus.CREATED).body("201, post");
+//        return  ResponseEntity.status(HttpStatus.ACCEPTED).body("202, pending");
+//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("401");
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("403");
+    }
+
+    @GetMapping("practice/{exception1}")
+    public StudentResponseDTO exceptionPractice1(@PathVariable Integer exception1) {
+        return studentService.exceptionPractice1();
+    }
+
+    @GetMapping("practice")
+    public StudentResponseDTO exceptionPractice2(@RequestParam Integer exception2) {
+        return studentService.exceptionPractice2();
+    }
+
+    @GetMapping("login")
+    public ResponseEntity<String> login(HttpSession session) {
+        session.setAttribute("role", "admin");
+        return ResponseEntity.ok("200");
+    }
+
+    @GetMapping("logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.status(HttpStatus.OK).body("200");
+    }
+}

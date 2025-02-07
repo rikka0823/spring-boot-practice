@@ -1,15 +1,15 @@
-package com.rikka.springBootPractice.component;
+package com.rikka.springBootPractice.dto.pet;
 
-public class Pet {
+public class PetDTO {
 
     String name;
 
     String age;
 
-    public Pet() {
+    public PetDTO() {
     }
 
-    public Pet(String name, String age) {
+    public PetDTO(String name, String age) {
         this.name = name;
         this.age = age;
     }

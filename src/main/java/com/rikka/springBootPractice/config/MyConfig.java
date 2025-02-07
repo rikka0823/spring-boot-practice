@@ -1,20 +1,19 @@
-package com.rikka.springBootPractice.configuration;
+package com.rikka.springBootPractice.config;
 
 import com.rikka.springBootPractice.component.CanonComponent;
 import com.rikka.springBootPractice.component.HpComponent;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MyConfiguration {
+public class MyConfig {
 
 //    @Value("${rikka.coun:999}")
     private int count;
 
     @Bean
     public CanonComponent c() {
-        System.out.println(count);
+//        System.out.println(count);
         return new CanonComponent();
     }
 
@@ -22,5 +21,4 @@ public class MyConfiguration {
     public HpComponent hpComponent() {
         return new HpComponent();
     }
-
 }

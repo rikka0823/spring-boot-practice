@@ -1,8 +1,10 @@
-package com.rikka.springBootPractice.component;
+package com.rikka.springBootPractice.dto.student;
+
+import com.rikka.springBootPractice.dto.pet.PetDTO;
 
 import java.util.List;
 
-public class Student {
+public class StudentDTO {
 
     private String name;
 
@@ -14,21 +16,21 @@ public class Student {
 
     private List<String> courseList;
 
-    private Pet pet;
+    private PetDTO petDTO;
 
-    private List<Pet> petList;
+    private List<PetDTO> petDTOList;
 
-    public Student() {
+    public StudentDTO() {
     }
 
-    public Student(String name, Integer age, Boolean edit, Double score, List<String> courseList, Pet pet, List<Pet> petList) {
+    public StudentDTO(String name, Integer age, Boolean edit, Double score, List<String> courseList, PetDTO petDTO, List<PetDTO> petDTOList) {
         this.name = name;
         this.age = age;
         this.edit = edit;
         this.score = score;
         this.courseList = courseList;
-        this.pet = pet;
-        this.petList = petList;
+        this.petDTO = petDTO;
+        this.petDTOList = petDTOList;
     }
 
     public String getName() {
@@ -51,12 +53,12 @@ public class Student {
         return courseList;
     }
 
-    public Pet getPet() {
-        return pet;
+    public PetDTO getPet() {
+        return petDTO;
     }
 
-    public List<Pet> getPetList() {
-        return petList;
+    public List<PetDTO> getPetList() {
+        return petDTOList;
     }
 
     @Override
@@ -67,8 +69,8 @@ public class Student {
                 ", edit=" + edit +
                 ", score=" + score +
                 ", courseList=" + courseList +
-                ", pet=" + pet +
-                ", petList=" + petList +
+                ", pet=" + petDTO +
+                ", petList=" + petDTOList +
                 '}';
     }
 }
