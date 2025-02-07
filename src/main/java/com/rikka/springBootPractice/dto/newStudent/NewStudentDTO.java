@@ -1,9 +1,14 @@
 package com.rikka.springBootPractice.dto.newStudent;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class NewStudentDTO {
 
+    @NotNull
     private Integer id;
 
+    @NotBlank
     private String name;
 
     public NewStudentDTO() {
