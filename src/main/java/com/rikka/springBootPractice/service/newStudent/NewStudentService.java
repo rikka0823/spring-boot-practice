@@ -1,6 +1,6 @@
 package com.rikka.springBootPractice.service.newStudent;
 
-import com.rikka.springBootPractice.dto.newStudent.NewStudentDTO;
+import com.rikka.springBootPractice.model.dto.newStudent.NewStudentDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

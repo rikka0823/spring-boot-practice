@@ -1,4 +1,4 @@
-package com.rikka.springBootPractice.model;
+package com.rikka.springBootPractice.model.vo;
 
 public class StudentNameCountVO {
 

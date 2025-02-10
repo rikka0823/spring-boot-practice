@@ -1,7 +1,7 @@
 package com.rikka.springBootPractice.service.newStudent;
 
-import com.rikka.springBootPractice.dao.NewStudentDao;
-import com.rikka.springBootPractice.dto.newStudent.NewStudentDTO;
+import com.rikka.springBootPractice.dao.newStudent.NewStudentDao;
+import com.rikka.springBootPractice.model.dto.newStudent.NewStudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,9 +1,10 @@
-package com.rikka.springBootPractice.dao;
+package com.rikka.springBootPractice.dao.newStudent;
 
-import com.rikka.springBootPractice.dto.newStudent.NewStudentDTO;
+import com.rikka.springBootPractice.model.dto.newStudent.NewStudentDTO;
 import com.rikka.springBootPractice.mapper.NewStudentMapper;
-import com.rikka.springBootPractice.model.StudentNameCountVO;
+import com.rikka.springBootPractice.model.vo.StudentNameCountVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -18,6 +19,7 @@ import java.util.Map;
 public class NewStudentDaoImpl implements NewStudentDao {
 
     @Autowired
+    @Qualifier("practiceJdbcTemplate")
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
@@ -162,6 +164,7 @@ public class NewStudentDaoImpl implements NewStudentDao {
                     vo.setCount(rs.getInt("count"));
                     return vo;
                 });
+//        voList.forEach(System.out::println);
 
         List<Map<String, Integer>> voMapList = voList.stream()
                 .map(vo -> {
@@ -170,6 +173,7 @@ public class NewStudentDaoImpl implements NewStudentDao {
                     return map;
                 })
                 .toList();
+//        voMapList.forEach(System.out::println);
 
         return voMapList;
     }

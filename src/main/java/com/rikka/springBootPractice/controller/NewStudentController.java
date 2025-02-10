@@ -1,7 +1,7 @@
 package com.rikka.springBootPractice.controller;
 
 
-import com.rikka.springBootPractice.dto.newStudent.NewStudentDTO;
+import com.rikka.springBootPractice.model.dto.newStudent.NewStudentDTO;
 import com.rikka.springBootPractice.service.newStudent.NewStudentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +66,7 @@ public class NewStudentController {
     }
 
     @GetMapping("count")
-    ResponseEntity<List<Map<String, Integer>>> countStudentsByName() {
+    public ResponseEntity<List<Map<String, Integer>>> countStudentsByName() {
         return newStudentService.countStudentsByName();
     }
 }

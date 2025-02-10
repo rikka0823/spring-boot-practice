@@ -1,8 +1,8 @@
 package com.rikka.springBootPractice.service.student;
 
-import com.rikka.springBootPractice.dto.pet.PetDTO;
-import com.rikka.springBootPractice.dto.student.StudentRequestDTO;
-import com.rikka.springBootPractice.dto.student.StudentResponseDTO;
+import com.rikka.springBootPractice.model.dto.pet.PetDTO;
+import com.rikka.springBootPractice.model.dto.student.StudentRequestDTO;
+import com.rikka.springBootPractice.model.dto.student.StudentResponseDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

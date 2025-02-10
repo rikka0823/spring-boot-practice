@@ -1,4 +1,4 @@
-package com.rikka.springBootPractice.dto.pet;
+package com.rikka.springBootPractice.model.dto.pet;
 
 public class PetDTO {
 

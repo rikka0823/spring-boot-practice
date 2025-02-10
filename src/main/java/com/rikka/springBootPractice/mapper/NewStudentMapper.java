@@ -1,6 +1,6 @@
 package com.rikka.springBootPractice.mapper;
 
-import com.rikka.springBootPractice.dto.newStudent.NewStudentDTO;
+import com.rikka.springBootPractice.model.dto.newStudent.NewStudentDTO;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

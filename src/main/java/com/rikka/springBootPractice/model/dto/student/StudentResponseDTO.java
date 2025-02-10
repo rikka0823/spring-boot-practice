@@ -1,6 +1,6 @@
-package com.rikka.springBootPractice.dto.student;
+package com.rikka.springBootPractice.model.dto.student;
 
-import com.rikka.springBootPractice.dto.pet.PetDTO;
+import com.rikka.springBootPractice.model.dto.pet.PetDTO;
 
 import java.util.List;
 

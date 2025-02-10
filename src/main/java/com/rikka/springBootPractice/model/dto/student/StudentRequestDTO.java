@@ -1,4 +1,4 @@
-package com.rikka.springBootPractice.dto.student;
+package com.rikka.springBootPractice.model.dto.student;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

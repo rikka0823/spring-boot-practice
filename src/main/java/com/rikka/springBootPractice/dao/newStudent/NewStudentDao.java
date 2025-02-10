@@ -1,6 +1,6 @@
-package com.rikka.springBootPractice.dao;
+package com.rikka.springBootPractice.dao.newStudent;
 
-import com.rikka.springBootPractice.dto.newStudent.NewStudentDTO;
+import com.rikka.springBootPractice.model.dto.newStudent.NewStudentDTO;
 
 import java.util.List;
 import java.util.Map;
