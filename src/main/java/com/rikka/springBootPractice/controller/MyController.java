@@ -25,7 +25,7 @@ public class MyController {
     @Autowired
     private StudentService studentService;
 
-    @Qualifier("hpComponent")
+    @Qualifier("hpDTO")
     @Autowired
     private PrintService printService;
 

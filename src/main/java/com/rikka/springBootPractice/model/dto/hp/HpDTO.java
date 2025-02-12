@@ -1,10 +1,10 @@
-package com.rikka.springBootPractice.component;
+package com.rikka.springBootPractice.model.dto.hp;
 
 import com.rikka.springBootPractice.service.print.PrintService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HpComponent implements PrintService {
+public class HpDTO implements PrintService {
 
 //    @Value("${count}")
     private int count;

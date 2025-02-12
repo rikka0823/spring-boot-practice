@@ -1,7 +1,7 @@
 package com.rikka.springBootPractice.config;
 
-import com.rikka.springBootPractice.component.CanonComponent;
-import com.rikka.springBootPractice.component.HpComponent;
+import com.rikka.springBootPractice.model.dto.canon.CanonDTO;
+import com.rikka.springBootPractice.model.dto.hp.HpDTO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,13 +12,13 @@ public class MyConfig {
     private int count;
 
     @Bean
-    public CanonComponent c() {
+    public CanonDTO c() {
 //        System.out.println(count);
-        return new CanonComponent();
+        return new CanonDTO();
     }
 
     @Bean("hp")
-    public HpComponent hpComponent() {
-        return new HpComponent();
+    public HpDTO hpComponent() {
+        return new HpDTO();
     }
 }
