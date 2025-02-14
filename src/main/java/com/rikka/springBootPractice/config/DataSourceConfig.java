@@ -8,6 +8,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -54,6 +55,13 @@ public class DataSourceConfig {
     public NamedParameterJdbcTemplate practiceJdbcTemplate(
             @Qualifier("practiceDataSource") DataSource dataSource) {
         return new NamedParameterJdbcTemplate(dataSource);
+    }
+
+    // 處理多資料庫 @Transactional
+    @Bean
+    public DataSourceTransactionManager practiceTransactionManage(
+            @Qualifier("practiceDataSource") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
     }
 
     // JPA 設定: spring_boot_practice 資料庫

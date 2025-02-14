@@ -1,4 +1,4 @@
-package com.rikka.springBootPractice.student;
+package com.rikka.springBootPractice.service.student;
 
 import com.rikka.springBootPractice.service.student.StudentService;
 import org.junit.jupiter.api.Test;
