@@ -1,4 +1,4 @@
-package com.rikka.springBootPractice.service.testStudent;
+package com.rikka.springBootPractice.dao.testStudent;
 
 import com.rikka.springBootPractice.model.dto.testStudent.TestStudentDTO;
 

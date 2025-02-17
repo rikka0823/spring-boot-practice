@@ -1,5 +1,6 @@
 package com.rikka.springBootPractice.service.testStudent;
 
+import com.rikka.springBootPractice.dao.testStudent.TestStudentDao;
 import com.rikka.springBootPractice.model.dto.testStudent.TestStudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
