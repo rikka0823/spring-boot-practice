@@ -1,5 +1,6 @@
 package com.rikka.springBootPractice.model.dto.newStudent;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -8,6 +9,7 @@ public class NewStudentDTO {
     @NotNull
     private Integer id;
 
+    @JsonProperty("Name")
     @NotBlank
     private String name;
 

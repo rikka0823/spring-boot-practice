@@ -2,6 +2,8 @@ package com.rikka.springBootPractice.controller;
 
 import com.rikka.springBootPractice.model.dto.testStudent.TestStudentDTO;
 import com.rikka.springBootPractice.service.testStudent.TestStudentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TestStudentController {
+
+    private final static Logger log = LoggerFactory.getLogger(TestStudentController.class);
 
     @Autowired
     private TestStudentService studentService;
@@ -45,6 +49,8 @@ public class TestStudentController {
     public ResponseEntity<TestStudentDTO> read(@PathVariable Integer studentId) {
 
         TestStudentDTO student = studentService.getById(studentId);
+
+        log.info("hi:" + studentId);
 
         return ResponseEntity.status(HttpStatus.OK).body(student);
     }
