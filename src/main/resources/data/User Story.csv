@@ -1,0 +1,17 @@
+編號,API 路徑,方法,功能描述,適用角色,User Story（簡述）
+1,/users/register,POST,註冊帳號,"customer, seller",作為一個用戶，我想註冊帳號，以便可以購買商品。
+2,/users/login,POST,登入,全部角色,作為一個用戶，我想登入平台，以便使用平台提供的服務。
+3,/users/search?email=,GET,查詢用戶資訊,admin,作為一個管理者，我想根據 email 查詢用戶資訊，以便進行管理。
+4,/users/update,PUT,更新用戶角色,admin,作為一個管理者，我想修改用戶的角色，以便控管平台權限。
+5,/users/{userId}/delete,DELETE,刪除帳號,"admin, 自己",作為一個管理者或帳號擁有者，我想刪除帳號，以確保不再使用該帳號。
+6,/products,GET,查詢商品列表,全部角色,作為一個用戶，我想瀏覽商品，以便找到我需要的商品。
+7,/products/{productId},GET,查詢單一商品,全部角色,作為一個用戶，我想查看商品詳細資料，以便了解是否符合我的需求。
+8,/products,POST,新增商品,"seller, admin",作為一個賣家，我想新增商品，以便在平台上販售。
+9,/products/{productId},PUT,更新商品,"seller, admin",作為一個賣家，我想更新商品資訊，以便讓資訊保持最新。
+10,/products/{productId},DELETE,刪除商品,"seller, admin",作為一個賣家，我想刪除已下架的商品，以免顧客誤買。
+11,/users/{userId}/orders,POST,建立訂單,customer,作為一個買家，我想建立訂單，以便購買商品。
+12,/users/{userId}/orders,GET,查詢所有訂單,customer,作為一個買家，我想查詢我的所有訂單，以便追蹤出貨與購買紀錄。
+13,/users/{userId}/orders/{orderId},DELETE,刪除訂單,customer,作為一個買家，我想取消或刪除訂單，以便管理我的消費記錄。
+14,/keycloak/buildAuthUrl,GET,取得登入授權網址,全部角色,作為一個用戶，我想獲得 Keycloak 的登入授權網址，以便進行 OAuth 登入。
+15,/keycloak/getToken,POST,取得 access token & refresh token,全部角色,作為一個用戶，我想透過 code 取得 access token，以進入系統。
+16,/keycloak/exchangeAccessToken,POST,使用 refresh token 換 access token,全部角色,作為一個用戶，我想更新 access token，以繼續保持登入狀態。
