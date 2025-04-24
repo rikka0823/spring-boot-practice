@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ProductService {
 
-    void saveData(List<Product> productList);
+    void saveCsvData(String dataSource);
 }
