@@ -1,0 +1,8 @@
+product_id,product_name,category,image_url,price,stock,description,created_date,last_modified_date
+1,2,2
+2,2,3
+3,3,4
+4,4,6
+5,6,5
+6,6,3
+7,6,1

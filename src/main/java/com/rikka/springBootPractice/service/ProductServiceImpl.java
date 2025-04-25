@@ -55,4 +55,45 @@ public class ProductServiceImpl implements ProductService {
             log.warn("exception:", e);
         }
     }
+
+    @Transactional
+    @Override
+    public void saveStockAndPrice(String dataSource) {
+        List<Integer> ids = new ArrayList<>();
+        List<Integer> s = new ArrayList<>();
+        List<Integer> p = new ArrayList<>();
+        try (
+                InputStream inputStream = getClass().getClassLoader().getResourceAsStream(dataSource);
+                InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+                CSVReader csvReader = new CSVReader(reader)
+        ) {
+            csvReader.readNext();
+            String[] row;
+            while ((row = csvReader.readNext()) != null) {
+                ids.add(Integer.parseInt(row[0]));
+                s.add(Integer.parseInt(row[2]));
+                p.add(Integer.parseInt(row[1]));
+            }
+        } catch (Exception e) {
+            log.warn("exception:", e);
+        }
+
+        for (int i = 0; i < ids.size(); i++) {
+            productRepository.updateStockAndPrice(ids.get(i), s.get(i), p.get(i));
+        }
+    }
+
+    @Transactional
+    @Override
+    public void updateTotal() {
+        List<Object[]> results = productRepository.getPriceAndStock();
+
+        for (Object[] result : results) {
+            productRepository.updateTotal(
+                    (Integer) result[0],
+                    (Integer) result[1],
+                    (Integer) result[2]
+            );
+        }
+    }
 }

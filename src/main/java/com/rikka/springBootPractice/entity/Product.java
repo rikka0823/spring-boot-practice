@@ -46,5 +46,11 @@ public class Product {
 
     @Column(name = "last_modified_date")
     private Timestamp lastModifiedDate;
+
+    @Column(name = "s")
+    private Integer s;
+
+    @Column(name = "p")
+    private Integer p;
 }
 

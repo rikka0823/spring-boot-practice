@@ -14,4 +14,14 @@ public class ProductServiceImplTest {
     public void saveCsvData() {
         productService.saveCsvData("data/product.csv");
     }
+
+    @Test
+    public void saveStockAndPrice() {
+        productService.saveStockAndPrice("data/stockAndPrice.csv");
+    }
+
+    @Test
+    public void updateTotal() {
+        productService.updateTotal();
+    }
 }
