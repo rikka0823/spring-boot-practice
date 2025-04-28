@@ -2,6 +2,7 @@ package com.rikka.springBootPractice.service;
 
 import com.opencsv.CSVReader;
 import com.rikka.springBootPractice.constant.Category;
+import com.rikka.springBootPractice.dao.ProductDao;
 import com.rikka.springBootPractice.entity.Product;
 import com.rikka.springBootPractice.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -23,13 +24,15 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private ProductDao productDao;
+
     @Transactional
     @Override
     public void saveCsvData(String dataSource) {
-        try (
-                InputStream inputStream = getClass().getClassLoader().getResourceAsStream(dataSource);
-                InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-                CSVReader csvReader = new CSVReader(reader)
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(dataSource);
+             InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+             CSVReader csvReader = new CSVReader(reader)
         ) {
             List<Product> productList = new ArrayList<>();
 
@@ -94,6 +97,39 @@ public class ProductServiceImpl implements ProductService {
                     (Integer) result[1],
                     (Integer) result[2]
             );
+        }
+    }
+
+    @Transactional
+    @Override
+    public void saveCsvDataByJdbc(String dataSource) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(dataSource);
+             InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+             CSVReader csvReader = new CSVReader(reader)
+        ) {
+            List<com.rikka.springBootPractice.model.Product> productList = new ArrayList<>();
+
+            csvReader.readNext();
+            String[] row;
+            while ((row = csvReader.readNext()) != null) {
+                com.rikka.springBootPractice.model.Product product = com.rikka.springBootPractice.model.Product.builder()
+                        .productId(Integer.parseInt(row[0]))
+                        .productName(row[1])
+                        .category(Category.valueOf(row[2]))
+                        .imageUrl(row[3])
+                        .price(Integer.parseInt(row[4]))
+                        .stock(Integer.parseInt(row[5]))
+                        .description(row[6])
+                        .createdDate(Timestamp.valueOf(row[7]))
+                        .lastModifiedDate(Timestamp.valueOf(row[8]))
+                        .build();
+                productList.add(product);
+            }
+
+            productDao.saveCsvData(productList);
+
+        } catch (Exception e) {
+            log.warn("exception", e);
         }
     }
 }

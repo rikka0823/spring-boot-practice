@@ -24,4 +24,9 @@ public class ProductServiceImplTest {
     public void updateTotal() {
         productService.updateTotal();
     }
+
+    @Test
+    public void saveCsvDataByJdbc() {
+        productService.saveCsvDataByJdbc("data/product.csv");
+    }
 }

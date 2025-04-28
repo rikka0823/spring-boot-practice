@@ -7,4 +7,6 @@ public interface ProductService {
     void saveStockAndPrice(String dataSource);
 
     void updateTotal();
+
+    void saveCsvDataByJdbc(String dataSource);
 }
