@@ -40,4 +40,24 @@ public class ProductDaoImpl implements ProductDao {
 
         namedParameterJdbcTemplate.batchUpdate(sql, params);
     }
+
+    @Override
+    public void saveStockAndPriceByJdbc(List<Product> productList) {
+        String sql = """
+                UPDATE product
+                SET p = :p, s = :s
+                WHERE product_id = :productId
+                """;
+
+        MapSqlParameterSource[] params = new MapSqlParameterSource[productList.size()];
+        for (int i = 0; i < productList.size(); i++) {
+            Product product = productList.get(i);
+            params[i] = new MapSqlParameterSource()
+                    .addValue("p", product.getP())
+                    .addValue("s", product.getS())
+                    .addValue("productId", product.getProductId());
+        }
+
+        namedParameterJdbcTemplate.batchUpdate(sql, params);
+    }
 }

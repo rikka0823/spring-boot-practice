@@ -19,4 +19,6 @@ public class Product {
     private String description;
     private Timestamp createdDate;
     private Timestamp lastModifiedDate;
+    private int s;
+    private int p;
 }

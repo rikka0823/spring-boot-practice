@@ -29,4 +29,9 @@ public class ProductServiceImplTest {
     public void saveCsvDataByJdbc() {
         productService.saveCsvDataByJdbc("data/product.csv");
     }
+
+    @Test
+    public void saveStockAndPriceByJdbc() {
+        productService.saveStockAndPriceByJdbc("data/stockAndPrice.csv");
+    }
 }

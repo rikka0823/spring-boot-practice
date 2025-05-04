@@ -7,4 +7,6 @@ import java.util.List;
 public interface ProductDao {
 
     void saveCsvData(List<Product> productList);
+
+    void saveStockAndPriceByJdbc(List <Product> productList);
 }

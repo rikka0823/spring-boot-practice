@@ -132,4 +132,31 @@ public class ProductServiceImpl implements ProductService {
             log.warn("exception", e);
         }
     }
+
+    @Override
+    public void saveStockAndPriceByJdbc(String dateSource) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(dateSource);
+             InputStreamReader reader = new InputStreamReader(inputStream);
+             CSVReader csvReader = new CSVReader(reader)
+        ) {
+            List<com.rikka.springBootPractice.model.Product> productList = new ArrayList<>();
+            String[] row;
+
+            csvReader.readNext();
+            while ((row = csvReader.readNext()) != null) {
+                com.rikka.springBootPractice.model.Product product = com.rikka.springBootPractice.model.Product.builder()
+                        .productId(Integer.parseInt(row[0]))
+                        .p(Integer.parseInt(row[1]))
+                        .s(Integer.parseInt(row[2]))
+                        .build();
+                productList.add(product);
+            }
+
+            productDao.saveStockAndPriceByJdbc(productList);
+        } catch (Exception e) {
+            log.warn("exception:", e);
+        }
+    }
+
+
 }
