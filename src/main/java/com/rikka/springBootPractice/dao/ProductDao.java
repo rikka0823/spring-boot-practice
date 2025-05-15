@@ -9,4 +9,8 @@ public interface ProductDao {
     void saveCsvData(List<Product> productList);
 
     void saveStockAndPriceByJdbc(List <Product> productList);
+
+    void updateTotalByJdbc(List<Product> productList);
+
+    List<Product> getPriceAndStockByJdbc();
 }

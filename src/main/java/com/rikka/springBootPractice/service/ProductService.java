@@ -11,4 +11,6 @@ public interface ProductService {
     void saveCsvDataByJdbc(String dataSource);
 
     void saveStockAndPriceByJdbc(String dateSource);
+
+    void updateTotalByJdbc();
 }

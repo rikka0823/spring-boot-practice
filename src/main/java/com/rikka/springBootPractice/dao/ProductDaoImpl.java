@@ -1,5 +1,6 @@
 package com.rikka.springBootPractice.dao;
 
+import com.rikka.springBootPractice.mapper.ProductRowMapper;
 import com.rikka.springBootPractice.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -59,5 +60,35 @@ public class ProductDaoImpl implements ProductDao {
         }
 
         namedParameterJdbcTemplate.batchUpdate(sql, params);
+    }
+
+    @Override
+    public void updateTotalByJdbc(List<Product> productList) {
+        String sql = """
+                UPDATE product
+                SET total = :p * :s
+                WHERE product_id = :productId
+                """;
+
+        MapSqlParameterSource[] params = new MapSqlParameterSource[productList.size()];
+        for (int i = 0; i < productList.size(); i++) {
+            Product product = productList.get(i);
+            params[i] = new MapSqlParameterSource()
+                    .addValue("p", product.getP())
+                    .addValue("s", product.getS())
+                    .addValue("productId", product.getProductId());
+        }
+
+        namedParameterJdbcTemplate.batchUpdate(sql, params);
+    }
+
+    @Override
+    public List<Product> getPriceAndStockByJdbc() {
+        String sql = """
+                SELECT product_id, p, s
+                FROM product
+                """;
+
+        return namedParameterJdbcTemplate.query(sql, new ProductRowMapper());
     }
 }

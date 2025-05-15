@@ -1,5 +1,6 @@
 package com.rikka.springBootPractice.service;
 
+import com.rikka.springBootPractice.dao.ProductDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,6 +10,9 @@ public class ProductServiceImplTest {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductDao productDao;
 
     @Test
     public void saveCsvData() {
@@ -33,5 +37,10 @@ public class ProductServiceImplTest {
     @Test
     public void saveStockAndPriceByJdbc() {
         productService.saveStockAndPriceByJdbc("data/stockAndPrice.csv");
+    }
+
+    @Test
+    public void updateTotalByJdbc() {
+        productService.updateTotalByJdbc();
     }
 }
