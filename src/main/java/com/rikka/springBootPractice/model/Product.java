@@ -4,7 +4,7 @@ import com.rikka.springBootPractice.constant.Category;
 import lombok.Builder;
 import lombok.Data;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 @Builder
 @Data
@@ -17,8 +17,9 @@ public class Product {
     private int price;
     private int stock;
     private String description;
-    private Timestamp createdDate;
-    private Timestamp lastModifiedDate;
+    private Date createdDate;
+    private Date lastModifiedDate;
     private int s;
     private int p;
+    private int total;
 }

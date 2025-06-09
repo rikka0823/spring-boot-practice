@@ -163,5 +163,8 @@ public class ProductServiceImpl implements ProductService {
         productDao.updateTotalByJdbc(productDao.getPriceAndStockByJdbc());
     }
 
-
+    @Override
+    public List<com.rikka.springBootPractice.model.Product> getProductList() {
+        return productDao.getProductList();
+    }
 }

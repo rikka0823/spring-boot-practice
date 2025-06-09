@@ -1,5 +1,6 @@
 package com.rikka.springBootPractice.dao;
 
+import com.rikka.springBootPractice.mapper.ProductFullRowMapper;
 import com.rikka.springBootPractice.mapper.ProductRowMapper;
 import com.rikka.springBootPractice.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +91,16 @@ public class ProductDaoImpl implements ProductDao {
                 """;
 
         return namedParameterJdbcTemplate.query(sql, new ProductRowMapper());
+    }
+
+    @Override
+    public List<Product> getProductList() {
+        String sql = """
+                SELECT product_id, product_name, category, image_url, price,
+                stock, description, created_date, last_modified_date, p, s, total
+                FROM product
+                """;
+
+        return namedParameterJdbcTemplate.query(sql, new ProductFullRowMapper());
     }
 }

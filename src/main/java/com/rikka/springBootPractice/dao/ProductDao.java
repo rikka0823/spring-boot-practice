@@ -13,4 +13,6 @@ public interface ProductDao {
     void updateTotalByJdbc(List<Product> productList);
 
     List<Product> getPriceAndStockByJdbc();
+
+    List<Product> getProductList();
 }

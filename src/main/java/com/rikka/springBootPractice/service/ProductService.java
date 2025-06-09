@@ -1,5 +1,9 @@
 package com.rikka.springBootPractice.service;
 
+import com.rikka.springBootPractice.model.Product;
+
+import java.util.List;
+
 public interface ProductService {
 
     void saveCsvData(String dataSource);
@@ -13,4 +17,6 @@ public interface ProductService {
     void saveStockAndPriceByJdbc(String dateSource);
 
     void updateTotalByJdbc();
+
+    List<Product> getProductList();
 }
