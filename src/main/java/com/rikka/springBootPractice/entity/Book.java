@@ -25,7 +25,6 @@ public class Book {
     @Column(name = "price")
     private BigDecimal price;
 
-
     @Column(name = "published_date")
     private LocalDate publishedDate;
 
@@ -37,13 +36,77 @@ public class Book {
     @Column(name = "last_modified_date")
     private LocalDateTime lastModifiedDate;
 
+    public Book() {
+    }
+
+    private Book(Builder builder) {
+        this.bookId = builder.bookId;
+        this.title = builder.title;
+        this.author = builder.author;
+        this.price = builder.price;
+        this.publishedDate = builder.publishedDate;
+        this.createdDate = builder.createdDate;
+        this.lastModifiedDate = builder.lastModifiedDate;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+
+        private Integer bookId;
+        private String title;
+        private String author;
+        private BigDecimal price;
+        private LocalDate publishedDate;
+        private LocalDateTime createdDate;
+        private LocalDateTime lastModifiedDate;
+
+        public Builder setBookId(Integer bookId) {
+            this.bookId = bookId;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder author(String author) {
+            this.author = author;
+            return this;
+        }
+
+        public Builder price(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder publishedDate(LocalDate publishedDate) {
+            this.publishedDate = publishedDate;
+            return this;
+        }
+
+        public Builder createdDate(LocalDateTime createdDate) {
+            this.createdDate = createdDate;
+            return this;
+        }
+
+        public Builder lastModifiedDate(LocalDateTime lastModifiedDate) {
+            this.lastModifiedDate = lastModifiedDate;
+            return this;
+        }
+
+        public Book build() {
+            return new Book(this);
+        }
+    }
+
     public Integer getBookId() {
         return bookId;
     }
 
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
-    }
 
     public String getTitle() {
         return title;

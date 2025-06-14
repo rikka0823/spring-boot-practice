@@ -18,13 +18,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Integer createBook(BookDto bookDto) {
-        Book book = new Book();
-        book.setAuthor(bookDto.getAuthor());
-        book.setTitle(bookDto.getTitle());
-        book.setPrice(bookDto.getPrice());
-        book.setPublishedDate(bookDto.getPublishedDate());
-        book.setCreatedDate(LocalDateTime.now());
-        book.setLastModifiedDate(LocalDateTime.now());
+        Book book = Book.builder()
+                .author(bookDto.getAuthor())
+                .title(bookDto.getTitle())
+                .price(bookDto.getPrice())
+                .publishedDate(bookDto.getPublishedDate())
+                .createdDate(LocalDateTime.now())
+                .lastModifiedDate(LocalDateTime.now())
+                .build();
 
         bookRepository.save(book);
 
