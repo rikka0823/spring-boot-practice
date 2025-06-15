@@ -34,8 +34,11 @@ public class BookController {
 
     @GetMapping("/books/{bookId}")
     public ResponseEntity<Book> getBook(@PathVariable Integer bookId) {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(bookService.getBookById(bookId));
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(bookService.getBookById(bookId));
+        Book book = bookService.getBookById(bookId);
+        System.out.println("Got book: " + book); // 加個 log 看有沒有成功
+        return ResponseEntity.ok(book);
     }
 
     @PutMapping("/books/{bookId}")

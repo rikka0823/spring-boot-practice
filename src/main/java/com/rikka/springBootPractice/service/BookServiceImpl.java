@@ -39,8 +39,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBookById(Integer bookId) {
+//        return bookRepository.findById(bookId)
+//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return bookRepository.findById(bookId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> {
+                    System.out.println("找不到書籍 ID: " + bookId); // 加這行！
+                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "找不到書籍 ID: " + bookId);
+                });
     }
 
     @Override
