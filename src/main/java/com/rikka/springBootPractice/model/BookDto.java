@@ -9,27 +9,20 @@ import java.time.LocalDate;
 
 public class BookDto {
 
-    @NotBlank
+    @NotBlank(message = "not blank")
     private String title;
 
-    @NotBlank
+    @NotBlank(message = "not blank")
     private String author;
 
-    @NotNull
-    @DecimalMin(value = "0", inclusive = false)
+    @NotNull(message = "not null")
+    @DecimalMin(value = "0", inclusive = false, message = "The value must be greater than 0")
     private BigDecimal price;
 
-    @NotNull
+    @NotNull(message = "not null")
     private LocalDate publishedDate;
 
     public BookDto() {
-    }
-
-    public BookDto(String title, String author, BigDecimal price, LocalDate publishedDate) {
-        this.title = title;
-        this.author = author;
-        this.price = price;
-        this.publishedDate = publishedDate;
     }
 
     public String getTitle() {

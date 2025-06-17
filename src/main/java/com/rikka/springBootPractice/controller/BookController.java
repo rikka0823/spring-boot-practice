@@ -25,29 +25,20 @@ public class BookController {
         Integer bookId = bookService.createBook(bookDto);
         Book book = bookService.getBookById(bookId);
 
-        if (book == null) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-
         return ResponseEntity.status(HttpStatus.CREATED).body(book);
     }
 
     @GetMapping("/books/{bookId}")
     public ResponseEntity<Book> getBook(@PathVariable Integer bookId) {
-//        return ResponseEntity.status(HttpStatus.OK)
-//                .body(bookService.getBookById(bookId));
-        Book book = bookService.getBookById(bookId);
-        System.out.println("Got book: " + book); // 加個 log 看有沒有成功
-        return ResponseEntity.ok(book);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(bookService.getBookById(bookId));
     }
 
     @PutMapping("/books/{bookId}")
     public ResponseEntity<Book> updateBook(@PathVariable Integer bookId,
                                            @RequestBody @Valid BookDto bookDto) {
-        Book book = bookService.getBookById(bookId);
         bookService.updateBook(bookId, bookDto);
-
-        return ResponseEntity.status(HttpStatus.OK).body(book);
+        return ResponseEntity.status(HttpStatus.OK).body(bookService.getBookById(bookId));
     }
 
     @DeleteMapping("/books/{bookId}")
@@ -55,7 +46,7 @@ public class BookController {
         try {
             bookService.deleteBookById(bookId);
         } catch (EmptyResultDataAccessException e) {
-            logger.info(e.getMessage(), e);
+            logger.info(e.getMessage());
         }
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

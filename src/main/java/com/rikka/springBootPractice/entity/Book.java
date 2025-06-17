@@ -63,7 +63,7 @@ public class Book {
         private LocalDateTime createdDate;
         private LocalDateTime lastModifiedDate;
 
-        public Builder setBookId(Integer bookId) {
+        public Builder bookId(Integer bookId) {
             this.bookId = bookId;
             return this;
         }

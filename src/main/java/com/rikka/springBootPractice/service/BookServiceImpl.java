@@ -26,26 +26,15 @@ public class BookServiceImpl implements BookService {
                 .createdDate(LocalDateTime.now())
                 .lastModifiedDate(LocalDateTime.now())
                 .build();
-
         bookRepository.save(book);
 
-        Integer bookId = book.getBookId();
-        if (bookId == null) {
-            return -1;
-        }
-
-        return bookId;
+        return book.getBookId();
     }
 
     @Override
     public Book getBookById(Integer bookId) {
-//        return bookRepository.findById(bookId)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return bookRepository.findById(bookId)
-                .orElseThrow(() -> {
-                    System.out.println("找不到書籍 ID: " + bookId); // 加這行！
-                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "找不到書籍 ID: " + bookId);
-                });
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @Override
