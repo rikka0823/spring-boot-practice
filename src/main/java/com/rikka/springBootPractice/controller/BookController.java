@@ -173,7 +173,8 @@ public class BookController extends HttpServlet {
                     "ON c.customer_id = cs.customer_id " +
                     "JOIN stocks AS s " +
                     "ON cs.stock_id = s.stock_id " +
-                    "WHERE s.stock_name = ?";
+                    "WHERE s.stock_name = ? " +
+                    "ORDER BY cs.shares_owned DESC";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, keyWord);
 
